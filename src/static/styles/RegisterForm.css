@@ -1,0 +1,35 @@
+.register_form {
+  animation-name: showform;
+  animation-duration: 1.5s;
+  transition: .5s;
+}
+
+.welcome {
+  height: 68vh;
+  animation-name: showwelcome;
+  animation-duration: 1.5s;
+  transition: .5s;
+}
+
+@keyframes showform {
+  from {
+    position: relative;
+    left: 50rem;
+  }
+  to {
+    position: relative;
+    left: 0;
+  }
+}
+
+@keyframes showwelcome {
+  from {
+    position: relative;
+    right: 50rem;
+  }
+  to {
+    position: relative;
+    right: 0;
+  }
+}
+

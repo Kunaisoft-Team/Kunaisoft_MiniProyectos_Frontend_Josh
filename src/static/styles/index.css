@@ -3,10 +3,12 @@
 @tailwind utilities;
 
 :root {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   width: 100vw;
   height: 100vh;
   background-color: rgb(189, 170, 255);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }

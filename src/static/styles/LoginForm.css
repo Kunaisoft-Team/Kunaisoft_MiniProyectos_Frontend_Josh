@@ -1,0 +1,39 @@
+.login_form {
+  animation-name: showform;
+  animation-duration: 1.5s;
+  transition: .5s;
+}
+
+.welcome {
+  height: 68vh;
+  animation-name: showwelcome;
+  animation-duration: 1.5s;
+  transition: .5s;
+}
+
+@keyframes showform {
+  from {
+    position: relative;
+    right: 50rem;
+    opacity: 0;
+  }
+  to {
+    position: relative;
+    right: 0;
+    opacity: 100;
+  }
+}
+
+@keyframes showwelcome {
+  from {
+    position: relative;
+    left: 50rem;
+    opacity: 0;
+  }
+  to {
+    position: relative;
+    left: 0;
+    opacity: 100;
+  }
+}
+
