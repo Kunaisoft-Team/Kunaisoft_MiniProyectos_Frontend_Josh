@@ -10,11 +10,8 @@ export const loginSlice = createSlice({
     }
   },
   reducers: {
-    setUserData: ({ value }, { payload }) => {
-      value = {
-        ...value,
-        [payload.key]: payload.value
-      }
+    setUserData: (state, { payload }) => {
+      state.value[payload.key] = payload.value
     }
   }
 })

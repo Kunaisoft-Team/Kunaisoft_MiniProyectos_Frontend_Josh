@@ -7,6 +7,7 @@ export default function HomePage() {
   const [form, setForm] = useState("register")
   return (
     <div className='flex items-center justify-between w-full h-full z-10'>
+    <div className="loading">{form == "register" ? "Creating your account..." : "Logging in..."}</div>
       {
         form == "register" 
         ? 
