@@ -12,3 +12,9 @@
   justify-content: center;
   overflow: hidden;
 }
+
+html {
+  background: url(https://res.cloudinary.com/dxqa0mb8i/image/upload/v1696598627/tareas_2_frsmko.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}

@@ -1,10 +1,10 @@
 import "../static/styles/RegisterForm.css"
 
-export default function RegisterForm({form, setForm}) {
+export default function RegisterForm({setForm}) {
   
   const onLogin = () => {
     const registerForm  = document.querySelector(".register_form")
-    const welcome       = document.querySelector(".welcome")
+    const welcome       = document.querySelector(".welcome_register")
     registerForm.style.transform  = 'translateX(-50rem)'
     registerForm.style.opacity    = 0
     registerForm.style.visibility = "hidden"
@@ -17,7 +17,7 @@ export default function RegisterForm({form, setForm}) {
 
   return (
     <div className="w-1/2 m-10">
-      <form className='register_form block bg-slate-800 text-slate-100 w-full p-20 rounded-lg'>
+      <form className='register_form block bg-slate-900 text-slate-100 w-full p-20 rounded-lg'>
         <h1
           className='text-3xl font-bold text-center'
         >

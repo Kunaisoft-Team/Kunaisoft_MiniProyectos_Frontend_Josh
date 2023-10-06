@@ -1,17 +1,17 @@
 .register_form {
-  animation-name: showform;
+  animation-name: showform_register;
   animation-duration: 1.5s;
   transition: .5s;
 }
 
-.welcome {
+.welcome_register {
   height: 68vh;
-  animation-name: showwelcome;
+  animation-name: showwelcome_register;
   animation-duration: 1.5s;
   transition: .5s;
 }
 
-@keyframes showform {
+@keyframes showform_register {
   from {
     position: relative;
     left: 50rem;
@@ -22,7 +22,7 @@
   }
 }
 
-@keyframes showwelcome {
+@keyframes showwelcome_register {
   from {
     position: relative;
     right: 50rem;

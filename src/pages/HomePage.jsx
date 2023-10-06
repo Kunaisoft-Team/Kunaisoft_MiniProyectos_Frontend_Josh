@@ -6,17 +6,17 @@ import LoginForm    from '../components/LoginForm'
 export default function HomePage() {
   const [form, setForm] = useState("register")
   return (
-    <div className='flex items-center justify-between w-full h-full '>
+    <div className='flex items-center justify-between w-full h-full z-10'>
       {
         form == "register" 
         ? 
         <>
           <Welcome form={form} />
-          <RegisterForm form={form} setForm={setForm} /> 
+          <RegisterForm setForm={setForm} /> 
         </>
         : 
         <>
-          <LoginForm form={form} setForm={setForm} />
+          <LoginForm setForm={setForm} />
           <Welcome form={form} />
         </>
       }

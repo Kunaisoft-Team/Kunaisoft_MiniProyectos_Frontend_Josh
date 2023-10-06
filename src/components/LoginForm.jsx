@@ -1,6 +1,18 @@
 import "../static/styles/LoginForm.css"
 
-export default function LoginForm() {
+export default function LoginForm({setForm}) {
+  const onRegister = () => {
+    const registerForm  = document.querySelector(".login_form")
+    const welcome       = document.querySelector(".welcome_login")
+    registerForm.style.transform  = 'translateX(50rem)'
+    registerForm.style.opacity    = 0
+    registerForm.style.visibility = "hidden"
+    
+    welcome.style.transform  = 'translateX(-50rem)'
+    welcome.style.opacity    = 0
+    welcome.style.visibility = "hidden"
+    setTimeout(() => setForm("register"), 500)
+  }
   return (
     <div className="w-1/2 m-10">
       <form className='login_form block bg-slate-800 text-slate-100 w-full p-20 rounded-lg'>
@@ -28,12 +40,15 @@ export default function LoginForm() {
 
         <button
           className='m-auto w-full p-2 text-base rounded-md'
+          type="button"
+          onClick={onRegister}
         >
-          Already have an account? <b>Login here!</b>
+          You don't have an account? <b>Register here!</b>
         </button>
 
         <button
           className='m-auto w-full p-3 text-base rounded-md hover:bg-slate-400 hover:text-slate-800 transition duration-300'
+          type="submit"
         >
           Login now
         </button>
