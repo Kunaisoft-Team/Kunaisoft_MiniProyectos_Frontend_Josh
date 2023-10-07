@@ -1,0 +1,14 @@
+.tasks {
+  animation-name: show_tasks;
+  animation-duration: .5s;
+}
+
+@keyframes show_tasks {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 100;
+  }
+}
