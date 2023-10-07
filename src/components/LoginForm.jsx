@@ -1,5 +1,6 @@
 import { useState }                 from 'react'
 import { useCookies }               from 'react-cookie'
+import { useNavigate }              from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { setUserData }              from '../utils/redux/features/loginSlice'
 import { SERVER_URL, AUTH_ROUTE }   from '../utils/consts.js'
@@ -7,11 +8,13 @@ import { useFetch }                 from '../hooks/useFetch.js'
 import "../static/styles/LoginForm.css"
 
 export default function LoginForm({setForm}) {
-  const userData = useSelector(state => state.login.value)
-  const dispatch = useDispatch()
+  const userData                = useSelector(state => state.login.value)
+  const dispatch                = useDispatch()
 
   const [response, setResponse] = useState({msgs: [], status: 0, access_token: ""})
-  const [cookies, setCookies]   = useCookies(['access-token'])
+  const [cookies, setCookies]   = useCookies(['access_token'])
+
+  const navigate                = useNavigate()
   
   const onChange = e => {
     dispatch(setUserData({key: e.target.name, value: e.target.value}))
@@ -27,6 +30,7 @@ export default function LoginForm({setForm}) {
 
     setResponse({msgs: [], status: 0})
     const res = await useFetch(`${SERVER_URL}${AUTH_ROUTE}`, {method: "post", data: userData})
+    console.log(res)
     loading.style.transform     = "scale(0.5)"
     loading.style.opacity       = 0
     loading.style.visibility    = "hidden"
@@ -34,13 +38,14 @@ export default function LoginForm({setForm}) {
       {
         msgs: res?.response ? res.response.data.detail : res.data, 
         status: res?.response ? res.response.status : res.status,
-        access_token: res.data["access-token"] && res.data["access-token"]
+        access_token: res.data?.access_token ? res.data.access_token : ""
       }
     )
     if(res.status == 200) {
       let expires = new Date()
-      expires.setTime(expires.getTime() + (24 * 60 * 60 * 1000))
-      setCookies("access-token", res.data["access-token"], { path: "/", expires })
+      expires.setTime(expires.getTime() + (60 * 60 * 60 * 100))
+      setCookies("access_token", res.data.access_token, { path: "/", expires })
+      navigate("/tasks")
     }
   }
 

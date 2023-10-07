@@ -5,7 +5,7 @@ export const useFetch = async (url, options = {}) => {
     const response = await axios({
       url, 
       method: options?.method || "get",
-      data: options?.data     || {} 
+      data: options?.data     || {}
     })
     return response
   } catch (error) {
