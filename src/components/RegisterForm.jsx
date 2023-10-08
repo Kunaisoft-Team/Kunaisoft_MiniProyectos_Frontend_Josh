@@ -56,7 +56,7 @@ export default function RegisterForm({setForm}) {
   if(response.status == 201) setTimeout(onLogin, 2000)
 
   return (
-    <div className="w-1/2 m-10">
+    <div className="md:w-1/2 m-5 md:m-10">
       <form 
         className='register_form block bg-slate-900 text-slate-100 w-full p-20 rounded-lg'
         onSubmit={onSubmit}

@@ -64,7 +64,7 @@ export default function LoginForm({setForm}) {
   }
 
   return (
-    <div className="w-1/2 m-10">
+    <div className="lg:w-1/2 m-5 lg:m-10">
       <form 
         className='login_form block bg-slate-800 text-slate-100 w-full p-20 rounded-lg'
         onSubmit={onSubmit}

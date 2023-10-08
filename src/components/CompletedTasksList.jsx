@@ -25,7 +25,7 @@ export default function CompletedTasksList({ tasks }) {
   }
 
   return (
-    <div className="overflow-auto w-[calc(100vw/3)] h-[calc(100vh/1.5)]">
+    <div className="overflow-auto md:w-[calc(100vw/3)] md:h-[calc(100vh/1.5)]">
       <h1 className="text-center text-3xl font-semibold p-2">
         Completed tasks
       </h1>

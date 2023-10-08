@@ -6,7 +6,7 @@ import LoginForm    from '../components/LoginForm'
 export default function HomePage() {
   const [form, setForm] = useState("register")
   return (
-    <div className='flex items-center justify-between w-full h-full z-10'>
+    <div className='text-center m-auto md:flex md:items-center md:justify-between h-full z-10'>
     <div className="loading">{form == "register" ? "Creating your account..." : "Logging in..."}</div>
       {
         form == "register" 

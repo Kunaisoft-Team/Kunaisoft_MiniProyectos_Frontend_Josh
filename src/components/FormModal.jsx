@@ -42,8 +42,8 @@ export default function FormModal({data, setData, update = false, task_id = null
   }
 
   return (
-    <div className="modal absolute flex justify-center items-center top-0 left-0 right-0 bottom-0 rounded-md w-screen h-screen bg-gray-950 bg-opacity-40 transition-all duration-500">
-      <form className="relative bg-slate-700 p-10 rounded-md w-1/2">
+    <div className="modal absolute flex justify-center items-center top-0 left-0 right-0 bottom-0 rounded-md w-screen md:h-screen bg-gray-950 bg-opacity-40 transition-all duration-500">
+      <form className="relative bg-slate-700 p-10 rounded-md md:w-1/2 mx-10">
         <i 
           className="fa-solid fa-xmark absolute right-5 top-5 text-3xl cursor-pointer text-red-500 hover:text-red-400 transition duration-300"
           onClick={hideModal}

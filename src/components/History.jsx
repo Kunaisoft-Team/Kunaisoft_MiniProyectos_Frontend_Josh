@@ -55,7 +55,7 @@ export default function History({ tasks }) {
   }
 
   return (
-    <div className="overflow-auto w-[calc(100vw/3)] h-[calc(100vh/1.5)]">
+    <div className="overflow-auto md:w-[calc(100vw/3)] md:h-[calc(100vh/1.5)]">
       <h1 className="text-center text-3xl font-semibold p-2">
         History
       </h1>
@@ -68,7 +68,7 @@ export default function History({ tasks }) {
               {task.title}
             </h1>
             <p className='text-md font-bold p-3'>{task.description}</p>
-            <div>
+            <div className='flex md:block'>
               <button 
                 className='mx-2 p-3 bg-cyan-500 rounded-md hover:bg-cyan-400 transition duration-500'
                 onClick={() => onUpdate(task)}

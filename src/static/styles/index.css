@@ -5,10 +5,12 @@
 :root {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: rgb(189, 170, 255);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  height: auto;
+  overflow-x: hidden;
+}
+
+@media (min-width: 768px) { 
+  :root { height: 100vh; }
 }
 
 html {

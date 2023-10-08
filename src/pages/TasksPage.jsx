@@ -9,7 +9,7 @@ export default function TasksPage() {
   return (
     <>
       <Navbar />
-      <div className="bg-slate-300 p-10 m-auto w-2/3 rounded-md flex justify-around">
+      <div className="bg-slate-300 p-10 md:m-auto m-10 md:w-2/3 rounded-md md:flex md:justify-around">
         {
           tasks.loading 
           ?

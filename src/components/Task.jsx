@@ -56,27 +56,29 @@ export default function Task({ task }) {
   }
 
   return (
-    <div className='tasks bg-slate-600 text-slate-100 mx-10 mt-5 p-5 rounded-md' key={task._id}>
-      <h1 className='text-2xl font-bold p-3'>
-        {task.title}
-      </h1>
-      <p className='text-md font-bold p-3'>{task.description}</p>
-      <div>
-        <button 
-          className='mx-2 p-3 bg-cyan-500 rounded-md hover:bg-cyan-400 transition duration-500'
-          onClick={() => onUpdate(task)}
-        >
-          Update
-        </button>
-        
-        <button 
-          className='mx-2 p-3 bg-red-500 rounded-md hover:bg-red-400 transition duration-500'
-          onClick={() => onDelete(task)}
-        >
-          Delete
-        </button>
+    <div className="overflow-auto md:w-[calc(100vw/2)] md:h-[calc(100vh/1.5)]">
+      <div className='tasks bg-slate-600 text-slate-100 mx-10 mt-5 p-5 rounded-md' key={task._id}>
+        <h1 className='text-2xl font-bold p-3'>
+          {task.title}
+        </h1>
+        <p className='text-md font-bold p-3'>{task.description}</p>
+        <div className='flex md:block'>
+          <button 
+            className='mx-2 p-3 bg-cyan-500 rounded-md hover:bg-cyan-400 transition duration-500'
+            onClick={() => onUpdate(task)}
+          >
+            Update
+          </button>
+          
+          <button 
+            className='mx-2 p-3 bg-red-500 rounded-md hover:bg-red-400 transition duration-500'
+            onClick={() => onDelete(task)}
+          >
+            Delete
+          </button>
+        </div>
+        <FormModal data={data} setData={setData} update={update} task_id={id} />
       </div>
-      <FormModal data={data} setData={setData} update={update} task_id={id} />
     </div>
   )
 }
