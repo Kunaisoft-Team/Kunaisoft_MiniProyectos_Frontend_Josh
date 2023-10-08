@@ -1,17 +1,19 @@
 import { useDispatch }              from 'react-redux'
+import { useNavigate }              from 'react-router-dom'
 import { useFetch }                 from '../hooks/useFetch.js'
 import { SERVER_URL, TASKS_ROUTE }  from '../utils/consts.js'
 import { fetchTasks }               from '../utils/redux/features/taskSlice.js'
+import { saveOnHistory }            from '../utils/redux/features/historySlice.js'
 import "../static/styles/FormModal.css"
 
-export default function FormModal({data, setData, update = false, id = null}) {
+export default function FormModal({data, setData, update = false, task_id = null, user_id = null}) {
   
   const dispatch  = useDispatch()
+  const navigate  = useNavigate()
 
   const hideModal = () => {
     setData({title: "", description: ""})
     const modal = document.querySelector(".modal")
-    console.log(modal)
     modal.style.opacity     = 0
     modal.style.visibility  = "hidden"
   }
@@ -21,16 +23,22 @@ export default function FormModal({data, setData, update = false, id = null}) {
   }
 
   const onSubmit = async () => {
+    const url = !update ? `${SERVER_URL}${TASKS_ROUTE}?id=${user_id}` : `${SERVER_URL}${TASKS_ROUTE}?id=${task_id}` 
     const res = await useFetch(
-      `${SERVER_URL}${TASKS_ROUTE}?id=${id}`, 
+      url, 
       { 
         method: !update ? "post" : "put", 
         data 
       }
     )
-    console.log(res)
+    
+    if(!update) {
+      dispatch(saveOnHistory(res.data.task))
+    }
+
     dispatch(fetchTasks())
     hideModal()
+    navigate("/tasks")
   }
 
   return (

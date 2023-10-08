@@ -1,17 +1,13 @@
-import axios                              from 'axios'
 import { createSlice, createAsyncThunk }  from '@reduxjs/toolkit'
-import { SERVER_URL, TASKS_ROUTE }        from '../../../utils/consts.js'
 
-export const fetchTasks = createAsyncThunk("task/fetchTasks", () => {
-  return axios.get(SERVER_URL + TASKS_ROUTE)
-  .then(res => res.data.tasks)
-})
+export const fetchTasks = createAsyncThunk("task/fetchTasks", response => response)
 
 export const taskSlice = createSlice({
   name: "task",
   initialState: { 
     loading: false,
     tasks: [],
+    user: {},
     error: ""
   },
   extraReducers: builder => {
@@ -21,7 +17,8 @@ export const taskSlice = createSlice({
 
     builder.addCase(fetchTasks.fulfilled, (state, {payload}) => {
       state.loading = false
-      state.tasks   = payload 
+      state.tasks   = payload.tasks
+      state.user    = payload.user
     })
 
     builder.addCase(fetchTasks.rejected, (state, { error }) => {

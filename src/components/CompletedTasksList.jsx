@@ -1,12 +1,14 @@
+import { useNavigate }              from 'react-router-dom'
 import { useDispatch }              from 'react-redux'
 import { fetchTasks }               from '../utils/redux/features/taskSlice.js'
 import { useFetch }                 from '../hooks/useFetch.js'
 import { SERVER_URL, TASKS_ROUTE }  from '../utils/consts.js'
+import "../static/styles/Tasks.css"
 
 export default function CompletedTasksList({ tasks }) {  
   const completed_tasks = tasks.tasks.some(task => task.completed)
-
-  const dispatch = useDispatch()
+  
+  const navigate = useNavigate()
   
   const onIncompleted = async task => {
     const res = await useFetch(
@@ -19,8 +21,7 @@ export default function CompletedTasksList({ tasks }) {
         } 
       }
     )
-    console.log(res)
-    dispatch(fetchTasks())
+    navigate("/tasks")
   }
 
   return (
@@ -33,19 +34,14 @@ export default function CompletedTasksList({ tasks }) {
         ?
         tasks.tasks.map(task => (
           task.completed &&
-          <div className='bg-slate-600 text-slate-100 mx-10 mt-5 p-5 rounded-md' key={task._id}>
-            <h1 className='text-2xl font-bold p-3'>
-              <i 
-                className="fa-solid fa-check p-3 text-green-400 cursor-pointer"
-                onClick={() => onIncompleted(task)}
-              ></i>
+          <div className='tasks bg-slate-600 text-slate-100 mx-10 mt-5 p-5 rounded-md' key={task._id}>
+            <i 
+              className="fa-solid fa-check absolute p-3 text-2xl text-green-400 transition duration-300 cursor-pointer"
+              onClick={() => onIncompleted(task)}
+            ></i>
+            <h1 className='text-2xl font-bold p-3 ml-7'>
               {task.title}
             </h1>
-            <p className='text-md font-bold p-3'>{task.description}</p>
-            <div>
-              <button className='mx-2 p-3 bg-cyan-500 rounded-md hover:bg-cyan-400 transition duration-500'>Update</button>
-              <button className='mx-2 p-3 bg-red-500 rounded-md hover:bg-red-400 transition duration-500'>Delete</button>
-            </div>
           </div>
         ))
         :
