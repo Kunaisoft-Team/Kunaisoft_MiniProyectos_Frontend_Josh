@@ -1,3 +1,4 @@
+import { useState }                 from 'react'
 import { useDispatch }              from 'react-redux'
 import { useNavigate }              from 'react-router-dom'
 import { useFetch }                 from '../hooks/useFetch.js'
@@ -10,6 +11,8 @@ export default function FormModal({data, setData, update = false, task_id = null
   
   const dispatch  = useDispatch()
   const navigate  = useNavigate()
+
+  const [msg, setMsg] = useState("")
 
   const hideModal = () => {
     setData({title: "", description: ""})
@@ -31,6 +34,10 @@ export default function FormModal({data, setData, update = false, task_id = null
         data 
       }
     )
+
+    if(res.response) {
+      setMsg(res.response.data.detail.msg)
+    }
     
     if(!update) {
       dispatch(saveOnHistory(res.data.task))
@@ -74,6 +81,9 @@ export default function FormModal({data, setData, update = false, task_id = null
           onClick={onSubmit}
         >
           {!update ? "Create" : "Update"} task
+        </p>
+        <p className="text-red-400 text-center p-3">
+          {msg}
         </p>
       </form>
     </div>

@@ -30,6 +30,7 @@ export default function LoginForm({setForm}) {
 
     setResponse({msgs: [], status: 0})
     const res = await useFetch(`${SERVER_URL}${AUTH_ROUTE}`, {method: "post", data: userData})
+    console.log(res)
     loading.style.transform     = "scale(0.5)"
     loading.style.opacity       = 0
     loading.style.visibility    = "hidden"
