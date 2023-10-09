@@ -14,6 +14,8 @@ export default function FormModal({data, setData, update = false, task_id = null
 
   const [msg, setMsg] = useState("")
 
+  const valid_data = data.title && data.description
+
   const hideModal = () => {
     setData({title: "", description: ""})
     const modal = document.querySelector(".modal")
@@ -25,7 +27,8 @@ export default function FormModal({data, setData, update = false, task_id = null
     setData({...data, [e.target.name]: e.target.value})
   }
 
-  const onSubmit = async () => {
+  const onSubmit = async e => {
+    e.preventDefault()
     const url = !update ? `${SERVER_URL}${TASKS_ROUTE}?id=${user_id}` : `${SERVER_URL}${TASKS_ROUTE}?id=${task_id}` 
     const res = await useFetch(
       url, 
@@ -63,7 +66,8 @@ export default function FormModal({data, setData, update = false, task_id = null
           type="text"
           placeholder="Title"
           name="title"
-          onChange={onChange} 
+          onChange={onChange}
+          required 
           value={data.title && data.title}        
         />
 
@@ -72,19 +76,22 @@ export default function FormModal({data, setData, update = false, task_id = null
           type="text"
           placeholder="Description"
           name="description"
-          onChange={onChange} 
+          onChange={onChange}
+          required 
           value={data.description && data.description} 
         />
 
-        <p 
-          className="text-slate-100 cursor-pointer p-3 m-auto text-center hover:bg-slate-300 hover:text-slate-900 rounded-md w-32 transition duration-300"
+        <button
+          className="text-slate-100 cursor-pointer p-3 m-auto w-full text-center hover:bg-slate-300 hover:text-slate-900 disabled:bg-slate-500 disabled:pointer-events-none rounded-md transition duration-300"
           onClick={onSubmit}
+          disabled={!valid_data}
         >
           {!update ? "Create" : "Update"} task
-        </p>
+        </button>
         <p className="text-red-400 text-center p-3">
           {msg}
         </p>
+
       </form>
     </div>
   )

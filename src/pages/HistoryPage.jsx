@@ -1,4 +1,3 @@
-import { useState }     from 'react'
 import { useSelector }  from 'react-redux'
 import History          from '../components/History'
 import Navbar           from '../components/Navbar'
@@ -6,6 +5,8 @@ import Navbar           from '../components/Navbar'
 export default function HistoryPage() {
 
   const tasksOnHistory = useSelector(state => state.history.value)
+
+  console.log(tasksOnHistory)
   
   return (
     <>

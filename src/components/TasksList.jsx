@@ -1,7 +1,6 @@
-import { useEffect, useState }      from 'react'
+import { useState }                 from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate }              from 'react-router-dom'
-import { fetchTasks }               from '../utils/redux/features/taskSlice.js'
 import { useFetch }                 from '../hooks/useFetch.js'
 import { SERVER_URL, TASKS_ROUTE }  from '../utils/consts.js'
 import FormModal                    from './FormModal'
@@ -27,6 +26,7 @@ export default function TasksList({ tasks }) {
         } 
       }
     )
+    
     navigate("/tasks")
   }
   
